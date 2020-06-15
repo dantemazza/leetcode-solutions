@@ -1,4 +1,3 @@
-
 fib = [1, 2]
 res = 0
 while fib[1] < 4e6:
