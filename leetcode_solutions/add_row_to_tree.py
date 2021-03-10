@@ -10,17 +10,9 @@ class Solution:
             node = TreeNode(v)
             node.left = root
             return node
-        nodes = {}
         def dfs(node, depth):
             if not node:
                 return
-            nonlocal nodes
-            nodes[node] = depth
-            dfs(node.left, depth+1)
-            dfs(node.right, depth+1)
-        
-        dfs(root, 2)
-        for node, depth in nodes.items():
             if depth == d:
                 left = node.left
                 right = node.right
@@ -28,5 +20,10 @@ class Solution:
                 node.right = TreeNode(v)
                 node.left.left = left
                 node.right.right = right
-                
+                dfs(node.left.left, depth+1)
+                dfs(node.right.right, depth+1)
+            else:
+                dfs(node.left, depth+1)
+                dfs(node.right, depth+1)
+        dfs(root, 2)     
         return root
